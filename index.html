@@ -28,12 +28,6 @@
   --warning-light: #fef9c3;
   --danger: #b91c1c;
   --danger-light: #fee2e2;
-  --driver-accent: #7c3aed;
-  --driver-light: #f5f3ff;
-  --driver-border: #ddd6fe;
-  --traveler-accent: #0369a1;
-  --traveler-light: #e0f2fe;
-  --traveler-border: #bae6fd;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
   --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
@@ -66,12 +60,6 @@
     --warning-light: #422006;
     --danger: #f87171;
     --danger-light: #450a0a;
-    --driver-accent: #a78bfa;
-    --driver-light: #2e1065;
-    --driver-border: #4c1d95;
-    --traveler-accent: #38bdf8;
-    --traveler-light: #0c4a6e;
-    --traveler-border: #075985;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
     --shadow: 0 1px 3px rgba(0,0,0,0.4);
     --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
@@ -208,7 +196,7 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   gap: 8px;
   background: var(--accent-light);
-  border: 1px solid var(--traveler-border);
+  border: 1px solid var(--accent);
   padding: 10px 20px;
   border-radius: 100px;
   font-size: 14px;
@@ -279,53 +267,6 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ========================================
-   SECTION SWITCHER (Traveler/Driver)
-   ======================================== */
-.switcher {
-  display: flex;
-  gap: 8px;
-  padding: 4px;
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  margin-bottom: 32px;
-}
-
-.switcher-btn {
-  flex: 1;
-  padding: 12px 16px;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: var(--font);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--text-muted);
-}
-
-.switcher-btn svg { width: 18px; height: 18px; }
-
-.switcher-btn[data-target="traveler"].active {
-  background: var(--bg-card);
-  color: var(--traveler-accent);
-  box-shadow: var(--shadow);
-}
-
-.switcher-btn[data-target="driver"].active {
-  background: var(--bg-card);
-  color: var(--driver-accent);
-  box-shadow: var(--shadow);
-}
-
-.section-content { display: none; }
-.section-content.active { display: block; }
-
-/* ========================================
    CARDS
    ======================================== */
 .card {
@@ -339,10 +280,6 @@ p:last-child { margin-bottom: 0; }
 
 .card-accent {
   border-left: 4px solid var(--accent);
-}
-
-.card-driver {
-  border-left: 4px solid var(--driver-accent);
 }
 
 .card-success {
@@ -411,12 +348,6 @@ p:last-child { margin-bottom: 0; }
 }
 .tl-item.highlight .tl-dot svg { color: var(--accent); }
 
-.tl-item.driver-hl .tl-dot {
-  border-color: var(--driver-accent);
-  background: var(--driver-light);
-}
-.tl-item.driver-hl .tl-dot svg { color: var(--driver-accent); }
-
 .tl-time {
   font-size: 13px;
   font-weight: 700;
@@ -424,8 +355,6 @@ p:last-child { margin-bottom: 0; }
   color: var(--accent);
   margin-bottom: 2px;
 }
-
-.tl-item.driver-hl .tl-time { color: var(--driver-accent); }
 
 .tl-title {
   font-size: 15px;
@@ -440,7 +369,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ========================================
-   STEPS (for driver)
+   STEPS
    ======================================== */
 .step {
   display: flex;
@@ -456,9 +385,9 @@ p:last-child { margin-bottom: 0; }
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--driver-light);
-  border: 2px solid var(--driver-border);
-  color: var(--driver-accent);
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
+  color: var(--accent);
   font-size: 14px;
   font-weight: 700;
   display: flex;
@@ -537,7 +466,6 @@ p:last-child { margin-bottom: 0; }
 .badge-green { background: var(--success-light); color: var(--success); }
 .badge-yellow { background: var(--warning-light); color: var(--warning); }
 .badge-red { background: var(--danger-light); color: var(--danger); }
-.badge-purple { background: var(--driver-light); color: var(--driver-accent); }
 
 /* ========================================
    SVG DIAGRAMS
@@ -586,8 +514,6 @@ p:last-child { margin-bottom: 0; }
   color: var(--accent);
 }
 
-.info-list .il-icon.driver { color: var(--driver-accent); }
-
 /* ========================================
    CONTACT GRID
    ======================================== */
@@ -616,52 +542,6 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-mono);
   color: var(--text);
   text-decoration: none;
-}
-
-/* ========================================
-   REASSURANCE (driver section)
-   ======================================== */
-.reassurance {
-  background: var(--driver-light);
-  border: 1px solid var(--driver-border);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin: 16px 0;
-}
-
-.reassurance p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text);
-}
-
-.reassurance strong {
-  color: var(--driver-accent);
-}
-
-/* ========================================
-   WHATIF (driver FAQ)
-   ======================================== */
-.whatif {
-  background: var(--bg-card);
-  border: 1px solid var(--driver-border);
-  border-left: 4px solid var(--driver-accent);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-  margin-bottom: 12px;
-}
-
-.whatif-q {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--driver-accent);
-  margin-bottom: 6px;
-}
-
-.whatif-a {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
 }
 
 /* ========================================
@@ -713,11 +593,10 @@ p:last-child { margin-bottom: 0; }
    PRINT STYLES
    ======================================== */
 @media print {
-  .nav, .switcher, .countdown-box, .collapsible-chevron { display: none !important; }
+  .nav, .countdown-box, .collapsible-chevron { display: none !important; }
   .collapsible-body { display: block !important; }
-  .section-content { display: block !important; }
   body { font-size: 11pt; color: #000; background: #fff; }
-  .card, .quick-ref, .whatif, .reassurance, .diagram-container {
+  .card, .quick-ref, .diagram-container {
     break-inside: avoid;
     border: 1px solid #ccc;
     box-shadow: none;
@@ -731,7 +610,6 @@ p:last-child { margin-bottom: 0; }
 </head>
 <body>
 
-
 <!-- ========================================
      NAVIGATION
      ======================================== -->
@@ -741,7 +619,9 @@ p:last-child { margin-bottom: 0; }
     <div class="nav-links">
       <a href="#quick" class="nav-link active">Quick Ref</a>
       <a href="#timeline" class="nav-link">Timeline</a>
+      <a href="#driving" class="nav-link">Driving</a>
       <a href="#guide" class="nav-link">Guide</a>
+      <a href="#return" class="nav-link">Return</a>
       <a href="#contingency" class="nav-link">If Things Change</a>
     </div>
   </div>
@@ -779,11 +659,11 @@ p:last-child { margin-bottom: 0; }
     <div class="quick-ref-grid">
       <div class="qr-item">
         <span class="qr-label">Leave House</span>
-        <span class="qr-value big">6:30 AM</span>
+        <span class="qr-value big">5:30 AM</span>
       </div>
       <div class="qr-item">
-        <span class="qr-label">Arrive Airport</span>
-        <span class="qr-value big">9:00 AM</span>
+        <span class="qr-label">Value Parking</span>
+        <span class="qr-value big">7:30 AM</span>
       </div>
       <div class="qr-item">
         <span class="qr-label">Departure</span>
@@ -798,8 +678,8 @@ p:last-child { margin-bottom: 0; }
         <span class="qr-value">C &mdash; Upper Level</span>
       </div>
       <div class="qr-item">
-        <span class="qr-label">Confirmation</span>
-        <span class="qr-value" style="font-size: 13px;">United app &rarr; My Trips</span>
+        <span class="qr-label">Parking</span>
+        <span class="qr-value" style="font-size: 13px;">Value Parking, 139 McClellan St</span>
       </div>
       <div class="qr-item">
         <span class="qr-label">Check-In Level</span>
@@ -815,6 +695,15 @@ p:last-child { margin-bottom: 0; }
       </div>
     </div>
   </div>
+
+  <!-- Value Parking quick card -->
+  <div class="card card-success">
+    <h4 style="color: var(--success);">Parking: Confirmed &amp; Prepaid</h4>
+    <p><strong>Value Parking</strong> &mdash; 139 McClellan St, Newark, NJ 07114</p>
+    <p>Valet Prepay &bull; Reservation #00113999 &bull; Fully paid ($293.51)</p>
+    <p>Drop-off: <strong>Apr 27, 7:30 AM</strong> &bull; Return: <strong>May 11, 7:00 PM</strong></p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Phone: <a href="tel:+19736396711" style="color: var(--accent);">973-639-6711</a> &bull; Free shuttle to all terminals, ~4 min ride</p>
+  </div>
 </section>
 
 <!-- ========================================
@@ -825,57 +714,57 @@ p:last-child { margin-bottom: 0; }
   <div class="timeline">
     <div class="tl-item highlight">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v1m0 16v1m-9-9h1m16 0h1m-2.6-6.4l-.8.8m-12.4 12l-.8.8m0-13.6l.8.8m12.4 12l.8.8"/><circle cx="12" cy="12" r="4"/></svg></div>
-      <div class="tl-time">5:00 AM</div>
+      <div class="tl-time">4:15 AM</div>
       <div class="tl-title">Wake Up</div>
-      <div class="tl-desc">Shower, dress, final personal prep. You have 90 minutes before the car needs to move.</div>
+      <div class="tl-desc">Shower, dress, final personal prep. You have over an hour before the car needs to move.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
-      <div class="tl-time">5:45 AM</div>
-      <div class="tl-title">Final Pack &amp; Load Car</div>
-      <div class="tl-desc">Passport, wallet, phone, charger, carry-on bag. Load up and get ready to go.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9h18M9 3v6m6-6v6M4 9v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9"/></svg></div>
-      <div class="tl-time">6:10 AM</div>
-      <div class="tl-title">Quick Breakfast, Lock Up</div>
-      <div class="tl-desc">Light breakfast. Check lights, thermostat, locks. Last walkthrough.</div>
+      <div class="tl-time">5:00 AM</div>
+      <div class="tl-title">Final Pack, Breakfast &amp; Lock Up</div>
+      <div class="tl-desc">Passport, wallet, phone, charger, carry-on bag, printed boarding pass, parking reservation voucher. Light breakfast. Check lights, thermostat, locks. Last walkthrough.</div>
     </div>
     <div class="tl-item highlight">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div class="tl-time">6:30 AM</div>
+      <div class="tl-time">5:30 AM</div>
       <div class="tl-title">Leave Blackwood</div>
-      <div class="tl-desc">Head to Route 42 North. ~2.5 hour buffer for Monday rush on the Turnpike.</div>
+      <div class="tl-desc">Head to Route 42 North. 2-hour drive window for Monday morning traffic on the Turnpike. GPS: 139 McClellan St, Newark, NJ 07114.</div>
     </div>
-    <div class="tl-item driver-hl">
+    <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 17h14M5 17a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2M9 17l-1 4m8-4l-1 4m-8 0h10"/></svg></div>
-      <div class="tl-time">~8:30&ndash;9:00 AM</div>
-      <div class="tl-title">Arrive Terminal C, Upper Level</div>
-      <div class="tl-desc">Curbside drop-off. Hop out, say goodbye. Driver exits via airport loop back to Turnpike South.</div>
+      <div class="tl-time">~7:15&ndash;7:30 AM</div>
+      <div class="tl-title">Arrive Value Parking</div>
+      <div class="tl-desc">Pull in, hand keys to valet. Grab your carry-on. Board the free shuttle to Terminal C (~4 min ride).</div>
+    </div>
+    <div class="tl-item highlight">
+      <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg></div>
+      <div class="tl-time">~7:45&ndash;8:00 AM</div>
+      <div class="tl-title">Arrive Terminal C</div>
+      <div class="tl-desc">Shuttle drops you at the terminal. Walk into the departures hall. You're now on Level 2 &mdash; economy check-in.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div>
-      <div class="tl-time">9:00&ndash;9:30 AM</div>
+      <div class="tl-time">8:00&ndash;8:20 AM</div>
       <div class="tl-title">Check-In &amp; Document Verification</div>
-      <div class="tl-desc">Level 2, Zones E&ndash;G. Passport verification at kiosk. ~15&ndash;20 min if checked in online.</div>
+      <div class="tl-desc">Kiosk in Zones E&ndash;G. Passport scan for identity + APIS verification. ~15 min if checked in online, ~20 min if not.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div class="tl-time">9:30&ndash;9:50 AM</div>
+      <div class="tl-time">8:20&ndash;8:40 AM</div>
       <div class="tl-title">TSA PreCheck Security</div>
-      <div class="tl-desc">Mezzanine level. PreCheck line: ~10&ndash;15 min on a Monday mid-morning. Keep passport &amp; boarding pass ready.</div>
+      <div class="tl-desc">Mezzanine level. PreCheck line: ~10&ndash;15 min on a Monday morning. Passport &amp; boarding pass ready.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
-      <div class="tl-time">9:50&ndash;10:15 AM</div>
+      <div class="tl-time">8:40&ndash;9:00 AM</div>
       <div class="tl-title">Walk to Concourse C3</div>
-      <div class="tl-desc">10&ndash;15 minute walk to the international gates (C120s&ndash;C130s). Grab coffee, find your gate.</div>
+      <div class="tl-desc">10&ndash;15 minute walk to the international gates (C120s&ndash;C130s). Grab coffee, fill your water bottle.</div>
     </div>
     <div class="tl-item highlight">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-      <div class="tl-time">10:15 AM</div>
+      <div class="tl-time">9:00 AM</div>
       <div class="tl-title">At Gate &mdash; Settled</div>
-      <div class="tl-desc">75 minutes before departure. Relax. Charge your phone. Browse duty-free.</div>
+      <div class="tl-desc">2.5 hours before departure. Relax. Charge your phone. Browse duty-free. You have plenty of time.</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div>
@@ -893,571 +782,430 @@ p:last-child { margin-bottom: 0; }
 </section>
 
 <!-- ========================================
-     MAIN GUIDE — SWITCHER
+     DRIVING DIRECTIONS
+     ======================================== -->
+<section id="driving">
+  <h2>Getting There: Blackwood to Value Parking</h2>
+
+  <div class="card card-accent">
+    <p style="font-size: 15px; margin-bottom: 12px;">Four roads in a straight line north, plus a short detour to the parking lot. Set your GPS to <strong>139 McClellan St, Newark, NJ 07114</strong> before you leave.</p>
+    <p><span class="badge badge-blue">~90 miles</span> <span class="badge badge-blue">~1.5&ndash;2 hours</span> <span class="badge badge-yellow">Monday AM Turnpike traffic</span></p>
+  </div>
+
+  <!-- SVG Route Diagram -->
+  <div class="diagram-container">
+    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="font-family: system-ui, sans-serif;">
+      <!-- Road line -->
+      <line x1="40" y1="100" x2="660" y2="100" stroke="#bae6fd" stroke-width="8" stroke-linecap="round"/>
+      <line x1="40" y1="100" x2="660" y2="100" stroke="#0369a1" stroke-width="3" stroke-linecap="round" stroke-dasharray="12 6"/>
+
+      <!-- Stops -->
+      <circle cx="60" cy="100" r="16" fill="#0369a1"/>
+      <text x="60" y="105" font-size="10" fill="white" text-anchor="middle" font-weight="700">H</text>
+      <text x="60" y="75" font-size="11" font-weight="600" fill="#1c1917" text-anchor="middle">Blackwood</text>
+      <text x="60" y="135" font-size="10" fill="#78716c" text-anchor="middle">5:30 AM</text>
+
+      <circle cx="180" cy="100" r="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+      <text x="180" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">Rt 42 N</text>
+      <text x="180" y="135" font-size="9" fill="#78716c" text-anchor="middle">~5 min</text>
+
+      <circle cx="290" cy="100" r="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+      <text x="290" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">I-295 N</text>
+      <text x="290" y="135" font-size="9" fill="#78716c" text-anchor="middle">~35 min</text>
+
+      <circle cx="420" cy="100" r="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+      <text x="420" y="70" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">NJ Turnpike N</text>
+      <text x="420" y="83" font-size="9" fill="#b91c1c" text-anchor="middle">(LOCAL lanes!)</text>
+      <text x="420" y="135" font-size="9" fill="#78716c" text-anchor="middle">~60&ndash;80 min</text>
+
+      <circle cx="540" cy="100" r="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+      <text x="540" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">Exit 13A</text>
+      <text x="540" y="135" font-size="9" fill="#78716c" text-anchor="middle">~5 min</text>
+
+      <circle cx="650" cy="100" r="16" fill="#15803d"/>
+      <text x="650" y="104" font-size="7" fill="white" text-anchor="middle" font-weight="700">VP</text>
+      <text x="650" y="75" font-size="11" font-weight="600" fill="#1c1917" text-anchor="middle">Value Parking</text>
+      <text x="650" y="135" font-size="10" fill="#78716c" text-anchor="middle">~7:30 AM</text>
+    </svg>
+    <div class="diagram-label">Your route: four roads north, then GPS to Value Parking</div>
+  </div>
+
+  <h3>Driving Directions: Step by Step</h3>
+  <div class="card" style="padding: 8px 20px;">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Leave Blackwood &rarr; Route 42 North</div>
+        <div class="step-desc">Head to <strong>Route 42 North</strong> via the Black Horse Pike or Route 168. Route 42 is a freeway here &mdash; no traffic lights. You'll be on it for about 5 minutes.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Route 42 ends &rarr; Merge onto I-295 North</div>
+        <div class="step-desc">Route 42 feeds directly into <strong>I-295 North</strong> near Bellmawr. Just follow the signs for <strong>I-295 North</strong>. Do <em>not</em> follow signs for I-76 West (Philadelphia) &mdash; that goes left. You go straight/right.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">I-295 North &rarr; NJ Turnpike North</div>
+        <div class="step-desc">Stay on I-295 North for about 40 miles through Burlington County. Near Bordentown, follow signs for <strong>NJ Turnpike North / New York / Newark</strong>. You'll go through a toll plaza &mdash; your E-ZPass handles it automatically.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title" style="color: var(--danger);">CRITICAL: Take the LOCAL Lanes</div>
+        <div class="step-desc">The Turnpike splits into two sets of lanes around Exit 6. You need the <strong>LOCAL / Eastern lanes (exits 8&ndash;14)</strong>, not the Express/Western lanes. Look for signs that say <strong>"Local Lanes / Exits 8&ndash;14"</strong> and stay in those. Exit 13A is <em>only</em> accessible from the local lanes.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Exit 13A &mdash; Newark Airport</div>
+        <div class="step-desc">Take <strong>Exit 13A &mdash; Newark Airport / Elizabeth Seaport</strong>. After the exit, <strong>follow your GPS to Value Parking</strong> (139 McClellan St). It's about 1.3 miles from the airport entrance, just south of the terminals on McClellan St.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <div class="step-title">Arrive Value Parking &mdash; Valet Handoff</div>
+        <div class="step-desc">Pull into Value Parking. A valet attendant will meet you. <strong>Hand over your keys</strong>, grab your carry-on from the car, and show your reservation voucher. They'll park your Honda Pilot for you. Then board the <strong>free shuttle</strong> &mdash; it runs to all terminals, every few minutes. Tell the driver <strong>Terminal C</strong>. Ride is about 4 minutes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-warning" style="margin-top: 16px;">
+    <p style="font-size: 14px;"><strong>Monday morning Turnpike traffic:</strong> Northbound NJ Turnpike between Exits 7A and 13 can be heavy from 6:00&ndash;9:00 AM. Leaving at 5:30 AM means you'll hit the early edge of rush hour. The 2-hour drive window accounts for this. If traffic is lighter than expected, you'll just have more time at the airport.</p>
+  </div>
+</section>
+
+<!-- ========================================
+     MAIN GUIDE — AIRPORT STEPS
      ======================================== -->
 <section id="guide">
   <h2>Departure Guide</h2>
-  <div class="switcher">
-    <button class="switcher-btn active" data-target="traveler" onclick="switchSection('traveler')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Stephen's Guide
-    </button>
-    <button class="switcher-btn" data-target="driver" onclick="switchSection('driver')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-      Colleen's Guide
-    </button>
+
+  <!-- Pre-departure -->
+  <h3>Day Before: Sunday, April 26</h3>
+
+  <div class="card card-danger" style="margin-bottom: 16px;">
+    <h4 style="color: var(--danger);">Online Check-In Opens: Sunday, April 26 at 11:30 AM</h4>
+    <p>Check-in opens exactly <strong>24 hours before departure</strong>. Since United operates this flight, check in on <strong>united.com</strong> or the <strong>United app</strong>. Look up your reservation in the United app under My Trips, or use the confirmation number from your ANA booking email.</p>
+    <p><strong>What you'll need during check-in:</strong></p>
+    <ul style="margin: 8px 0 12px 20px; font-size: 14px;">
+      <li>Passport details (number, expiration date, issuing country)</li>
+      <li><strong>Your hotel address in Japan</strong> &mdash; required for APIS (Advance Passenger Information). Have this ready before you start.</li>
+      <li>Emergency contact name &amp; phone number</li>
+      <li>Seat confirmation &mdash; review/change your seat assignment</li>
+      <li>Dangerous goods acknowledgment (standard checkbox)</li>
+    </ul>
+    <p>Complete APIS data is <strong>mandatory</strong> &mdash; you cannot get a boarding pass without it. Don't skip or rush through the passport info fields.</p>
   </div>
 
-  <!-- ============ TRAVELER SECTION ============ -->
-  <div class="section-content active" id="traveler-content">
+  <div class="card card-warning" style="margin-bottom: 16px;">
+    <h4 style="color: var(--warning);">Boarding Pass: You Need a Paper Copy</h4>
+    <p><strong>United does not support mobile boarding passes for international departures from the US.</strong> This applies to all passengers on this flight, regardless of the codeshare.</p>
+    <p><strong>What to do:</strong> After completing online check-in on united.com, you'll be offered a PDF to print. <strong>Print it at home Sunday evening.</strong> This is your boarding pass.</p>
+    <p><strong>If you can't print at home:</strong> No problem. Use any self-service kiosk at Terminal C (Level 2, Zones E&ndash;G) to reprint. Scan your passport at the kiosk and it will pull up your reservation and print a boarding pass.</p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;"><em>Note: Since this is ANA ticket stock operated by United, the United app may show limited functionality. If the app doesn't pull up your booking, don't worry &mdash; the kiosk at the airport will work with your passport.</em></p>
+  </div>
 
-    <!-- Pre-departure -->
-    <h3>Day Before: Sunday, April 26</h3>
+  <div class="card card-accent">
+    <h4>Pre-Flight Checklist</h4>
+    <ul class="checklist">
+      <li><strong>11:30 AM Sunday</strong> &mdash; Online check-in opens on united.com. Do this immediately. Have your passport and Japan hotel address ready. Print your boarding pass at home (PDF).</li>
+      <li><strong>Passport check</strong> &mdash; Confirm it's valid through at least October 2026. Japan requires validity for the duration of your stay. US citizens do not need a visa for stays under 90 days.</li>
+      <li><strong>Visit Japan Web</strong> &mdash; Pre-register your customs and immigration info at vjw.digital.go.jp. This speeds up arrival at Narita significantly.</li>
+      <li><strong>Print boarding pass</strong> &mdash; After online check-in, print the PDF. Mobile boarding passes are not accepted for this international departure. Bring the paper copy.</li>
+      <li><strong>Print parking voucher</strong> &mdash; Print your Value Parking reservation confirmation (or have it on your phone). Reservation #00113999.</li>
+      <li><strong>Pack carry-on</strong> &mdash; 1 bag (max 22 x 14 x 9 in) + 1 personal item. Keep under 22 lbs total if possible (ANA's limit, loosely enforced on United metal). Pack everything you need: passport, phone charger, headphones, snacks, change of clothes. No checked bag means nothing to lose &mdash; and a faster exit at Narita.</li>
+      <li><strong>Japan medication check</strong> &mdash; <span class="badge badge-red">Critical</span> Japan strictly prohibits: Adderall/amphetamine ADHD meds, pseudoephedrine (Sudafed), some codeine products, and ALL cannabis/CBD products. If you take any prescription medications, verify they're legal in Japan before packing them.</li>
+      <li><strong>Confirm flight</strong> &mdash; Check united.com or the United app for schedule changes. Your e-ticket advises reconfirming 24&ndash;72 hours before departure.</li>
+      <li><strong>Car prep</strong> &mdash; Your Honda Pilot will sit at Value Parking for 15 days. Make sure nothing perishable is left in the car. Note where you left any valuables (or remove them).</li>
+      <li><strong>Set alarm</strong> &mdash; 4:15 AM. Set a backup alarm.</li>
+      <li><strong>Charge devices</strong> &mdash; Phone, tablet, portable battery. The 787 has power outlets at every seat, but start charged.</li>
+    </ul>
+  </div>
 
-    <div class="card card-danger" style="margin-bottom: 16px;">
-      <h4 style="color: var(--danger);">Online Check-In Opens: Sunday, April 26 at 11:30 AM</h4>
-      <p>Check-in opens exactly <strong>24 hours before departure</strong>. Since United operates this flight, check in on <strong>united.com</strong> or the <strong>United app</strong>. Look up your reservation in the United app under My Trips, or use the confirmation number from your ANA booking email.</p>
-      <p><strong>What you'll need during check-in:</strong></p>
+  <!-- At the airport -->
+  <h3>At the Airport: Step by Step</h3>
+
+  <div class="card">
+    <h4>Step 1 &mdash; Shuttle to Terminal C</h4>
+    <p>After handing your keys to the Value Parking valet, board the <strong>free shuttle</strong>. Tell the driver <strong>Terminal C</strong>. The ride is about 4 minutes.</p>
+    <p>The shuttle drops you at <strong>Level 2 (Departures)</strong>. Walk through the doors into the Terminal C check-in hall.</p>
+  </div>
+
+  <div class="card">
+    <h4>Step 2 &mdash; Check-In &amp; Document Verification</h4>
+    <p><span class="badge badge-green">No checked bag</span> You're traveling carry-on only, so this step is quick. No bag drop needed.</p>
+    <p><strong>If you checked in online and printed your boarding pass:</strong> Head to a <strong>self-service kiosk in Zones E&ndash;G</strong> on Level 2. Scan your passport for identity and APIS verification. The kiosk confirms your boarding pass. You're done &mdash; head straight to security.</p>
+    <p><strong>If you did NOT check in online:</strong> The kiosk handles everything &mdash; check-in, passport verification, and boarding pass printing. Scan your passport (easiest) or enter the confirmation number from your ANA booking email. Allow 15&ndash;20 minutes.</p>
+    <p><span class="badge badge-blue">Codeshare note</span> You check in at <strong>United counters/kiosks</strong>, not ANA. Your ANA confirmation (in your booking email or United app &rarr; My Trips) and ANA ticket stock work at United kiosks.</p>
+  </div>
+
+  <div class="card">
+    <h4>Step 3 &mdash; Security (TSA PreCheck)</h4>
+    <p>Head up to the <strong>Mezzanine level</strong>. Follow signs for <strong>Security / All Gates</strong>.</p>
+    <p>The main checkpoint has dedicated <strong>TSA PreCheck lanes</strong>. Monday mid-morning PreCheck wait: typically <strong>5&ndash;15 minutes</strong>.</p>
+    <p><strong>Have in hand:</strong> Passport + printed boarding pass. TSA PreCheck doesn't change what documents you need &mdash; it just speeds up the screening.</p>
+    <p><strong>PreCheck rules:</strong> Leave shoes on. Laptop stays in bag. No liquids removal. Belt stays on. Walk through the metal detector (not the body scanner). Fast and simple.</p>
+    <p><span class="badge badge-green">TSA PreCheck</span> You have PreCheck. Use the dedicated lane. It's marked clearly.</p>
+    <p style="margin-top: 8px; font-size: 13px; color: var(--text-muted);"><strong>After security:</strong> You can stow your passport for now. You won't need it again until the boarding gate. Fill your water bottle at a refill station (there's one near Gate C121).</p>
+  </div>
+
+  <div class="card">
+    <h4>Step 4 &mdash; Walk to Your Gate (Concourse C3)</h4>
+    <p>After security, you're airside. All three concourses (C1, C2, C3) are connected &mdash; no additional security needed.</p>
+    <p>International wide-body flights to NRT depart from <strong>Concourse C3, gates C120&ndash;C139</strong>. This is a <strong>10&ndash;15 minute walk</strong> from the main security checkpoint. Head left/straight and follow signs for gates C120+.</p>
+    <p>You'll pass restrooms, water refill stations, and food options on the walk. There are additional restrooms near the C130s gates.</p>
+    <div class="card card-warning" style="margin-top: 12px; margin-bottom: 0;">
+      <p><strong>Gate changes are common at EWR.</strong> Before committing to a long walk, check your gate on the <strong>departure board</strong> right after security and on the <strong>United app</strong> (Flight Status section &mdash; the boarding pass view can show stale info). Check again if you stop for food. Don't camp out far from the gate area until you've confirmed the gate number.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Step 5 &mdash; At the Gate</h4>
+    <p>You should arrive at the gate area by <strong>9:00 AM</strong> &mdash; 2.5 hours before departure. You have plenty of time.</p>
+    <p><strong>Boarding begins ~10:40 AM</strong> (about 50 minutes before departure for international 787 flights).</p>
+    <p><strong>At the gate, have ready:</strong> Passport + printed boarding pass. The gate agent <strong>will re-check your passport</strong> when you board &mdash; this is standard for all international departures. They scan both documents.</p>
+    <p><strong>Boarding order (United's system):</strong></p>
+    <ol style="margin: 8px 0 12px 20px; font-size: 14px;">
+      <li>Pre-boarding (disabilities, families with small children, military)</li>
+      <li>Group 1 &mdash; Business/first class, Premier Platinum/Gold, Star Alliance Gold</li>
+      <li>Group 2 &mdash; Premier Silver, Star Alliance Silver, United cardholders</li>
+      <li>Group 3 &mdash; Economy <strong>window</strong> seats</li>
+      <li>Group 4 &mdash; Economy <strong>middle</strong> seats</li>
+      <li>Group 5 &mdash; Economy <strong>aisle</strong> seats</li>
+    </ol>
+    <p>As an ANA-ticketed economy passenger, you'll be in <strong>Group 3, 4, or 5</strong> based on your seat position. <strong>Tip:</strong> A window seat puts you in Group 3 (earliest economy boarding), giving you first access to overhead bin space.</p>
+    <p><strong>Doors close at ~11:20 AM.</strong> Be at the gate before boarding starts.</p>
+  </div>
+
+  <!-- Terminal diagram -->
+  <h3>Terminal C: Interior Flow</h3>
+  <div class="diagram-container">
+    <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="font-family: system-ui, sans-serif;">
+      <rect width="700" height="340" fill="none"/>
+
+      <rect x="20" y="10" width="660" height="70" rx="8" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5" opacity="0.5"/>
+      <text x="40" y="38" font-size="11" font-weight="700" fill="#0369a1" text-transform="uppercase" letter-spacing="1">MEZZANINE — SECURITY &amp; GATES</text>
+      <text x="40" y="58" font-size="12" fill="#57534e">TSA PreCheck &rarr; All Gates (C1, C2, C3)</text>
+
+      <rect x="20" y="90" width="660" height="70" rx="8" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
+      <text x="40" y="118" font-size="11" font-weight="700" fill="#57534e" letter-spacing="1">LEVEL 3 — PREMIER CHECK-IN</text>
+      <text x="40" y="138" font-size="12" fill="#a8a29e">Zones B &amp; D</text>
+
+      <rect x="20" y="170" width="660" height="70" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+      <text x="40" y="198" font-size="11" font-weight="700" fill="#15803d" letter-spacing="1">LEVEL 2 — ECONOMY CHECK-IN (YOU)</text>
+      <text x="40" y="218" font-size="12" fill="#57534e">Zones E&ndash;G &bull; Self-service kiosks</text>
+
+      <rect x="20" y="250" width="660" height="70" rx="8" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
+      <text x="40" y="278" font-size="11" font-weight="700" fill="#57534e" letter-spacing="1">LEVEL 1 — ARRIVALS / BAGGAGE CLAIM</text>
+      <text x="40" y="298" font-size="12" fill="#a8a29e">Lower level &bull; Not needed for departure</text>
+
+      <line x1="530" y1="205" x2="530" y2="75" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrowBlue)"/>
+      <text x="545" y="155" font-size="11" font-weight="600" fill="#0369a1">Your path &#x2191;</text>
+
+      <rect x="450" y="18" width="65" height="50" rx="6" fill="#0369a1" opacity="0.15" stroke="#0369a1" stroke-width="1"/>
+      <text x="483" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C1</text>
+      <text x="483" y="52" font-size="9" fill="#57534e" text-anchor="middle">C70&ndash;C99</text>
+
+      <rect x="525" y="18" width="65" height="50" rx="6" fill="#0369a1" opacity="0.15" stroke="#0369a1" stroke-width="1"/>
+      <text x="558" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C2</text>
+      <text x="558" y="52" font-size="9" fill="#57534e" text-anchor="middle">C101&ndash;115</text>
+
+      <rect x="600" y="18" width="70" height="50" rx="6" fill="#0369a1" opacity="0.3" stroke="#0369a1" stroke-width="2"/>
+      <text x="635" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C3</text>
+      <text x="635" y="52" font-size="9" fill="#0369a1" text-anchor="middle">C120&ndash;139</text>
+
+      <defs>
+        <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#0369a1"/></marker>
+      </defs>
+    </svg>
+    <div class="diagram-label">Terminal C cross-section &mdash; shuttle drops you at Level 2, head up to security, then walk to C3</div>
+  </div>
+
+  <!-- Collapsibles -->
+  <div class="collapsible">
+    <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+      Near Your Gate: Food, Charging &amp; More
+      <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="collapsible-body">
+      <p><strong>Water:</strong> You can't bring water through security. Refill stations are near <strong>Gate C121</strong>, <strong>Gate C132</strong>, and <strong>Gate C138</strong>. Bring an empty bottle and fill up post-security.</p>
+
+      <p><strong>Food &mdash; should you eat?</strong> You'll arrive at the gate around 9:00 AM with boarding at ~10:40 AM. That's almost <strong>2 hours</strong> &mdash; plenty of time for a sit-down meal if you want one. The 787 will serve full meals on the 14-hour flight, but eating before boarding is a good idea.</p>
+      <p><strong>Options near C120&ndash;C139:</strong></p>
       <ul style="margin: 8px 0 12px 20px; font-size: 14px;">
-        <li>Passport details (number, expiration date, issuing country)</li>
-        <li><strong>Your hotel address in Japan</strong> &mdash; required for APIS (Advance Passenger Information). Have this ready before you start.</li>
-        <li>Emergency contact name &amp; phone number</li>
-        <li>Seat confirmation &mdash; review/change your seat assignment</li>
-        <li>Dangerous goods acknowledgment (standard checkbox)</li>
+        <li><strong>Caps Beer Garden</strong> (near C120) &mdash; bar food, sushi rolls, sandwiches.</li>
+        <li><strong>Pat LaFrieda Burger</strong> (near C120) &mdash; excellent burgers, counter service.</li>
+        <li><strong>Nathan's Famous</strong> &mdash; hot dogs, fastest option in C3.</li>
+        <li><strong>Dunkin'</strong> (C101&ndash;C115 area) &mdash; coffee, short walk back toward C2.</li>
       </ul>
-      <p>Complete APIS data is <strong>mandatory</strong> &mdash; you cannot get a boarding pass without it. Don't skip or rush through the passport info fields.</p>
-    </div>
+      <p>You can also buy food to bring on the plane as a backup snack.</p>
 
-    <div class="card card-warning" style="margin-bottom: 16px;">
-      <h4 style="color: var(--warning);">Boarding Pass: You Need a Paper Copy</h4>
-      <p><strong>United does not support mobile boarding passes for international departures from the US.</strong> This applies to all passengers on this flight, regardless of the codeshare.</p>
-      <p><strong>What to do:</strong> After completing online check-in on united.com, you'll be offered a PDF to print. <strong>Print it at home Sunday evening.</strong> This is your boarding pass.</p>
-      <p><strong>If you can't print at home:</strong> No problem. Use any self-service kiosk at Terminal C (Level 2, Zones E&ndash;G) to reprint. Scan your passport at the kiosk and it will pull up your reservation and print a boarding pass.</p>
-      <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;"><em>Note: Since this is ANA ticket stock operated by United, the United app may show limited functionality. If the app doesn't pull up your booking, don't worry &mdash; the kiosk at the airport will work with your passport.</em></p>
-    </div>
+      <p><strong>Restrooms:</strong> Located throughout C3 &mdash; near the concourse entrance, mid-concourse, and near the C130s gates.</p>
 
-    <div class="card card-accent">
-      <h4>Pre-Flight Checklist</h4>
-      <ul class="checklist">
-        <li><strong>11:30 AM Sunday</strong> &mdash; Online check-in opens on united.com. Do this immediately. Have your passport and Japan hotel address ready. Print your boarding pass at home (PDF).</li>
-        <li><strong>Passport check</strong> &mdash; Confirm it's valid through at least October 2026. Japan requires validity for the duration of your stay. US citizens do not need a visa for stays under 90 days.</li>
-        <li><strong>Visit Japan Web</strong> &mdash; Pre-register your customs and immigration info at vjw.digital.go.jp. This speeds up arrival at Narita significantly.</li>
-        <li><strong>Print boarding pass</strong> &mdash; After online check-in, print the PDF. Mobile boarding passes are not accepted for this international departure. Bring the paper copy.</li>
-        <li><strong>Pack carry-on</strong> &mdash; 1 bag (max 22 x 14 x 9 in) + 1 personal item. Keep under 22 lbs total if possible (ANA's limit, loosely enforced on United metal). Pack everything you need: passport, phone charger, headphones, snacks, change of clothes. No checked bag means nothing to lose &mdash; and a faster exit at Narita.</li>
-        <li><strong>Japan medication check</strong> &mdash; <span class="badge badge-red">Critical</span> Japan strictly prohibits: Adderall/amphetamine ADHD meds, pseudoephedrine (Sudafed), some codeine products, and ALL cannabis/CBD products. If you take any prescription medications, verify they're legal in Japan before packing them.</li>
-        <li><strong>Confirm flight</strong> &mdash; Check united.com or the United app for schedule changes. Your e-ticket advises reconfirming 24&ndash;72 hours before departure.</li>
-        <li><strong>Set alarm</strong> &mdash; 5:00 AM. Set a backup alarm.</li>
-        <li><strong>Charge devices</strong> &mdash; Phone, tablet, portable battery. The 787 has power outlets at every seat, but start charged.</li>
+      <p><strong>Charging:</strong> USB and AC power outlets at most gate seating areas in C3. The 787 also has outlets at every seat.</p>
+
+      <p><strong>Currency exchange:</strong> CXI (Currency Exchange International) has a location near the <strong>Gate C120 area</strong> post-security. However, <strong>you'll get a much better rate in Japan</strong>. Narita Airport has competitive exchange counters, and 7-Eleven ATMs throughout Japan give excellent rates with a Visa/Mastercard debit card. Recommendation: exchange a small amount ($50&ndash;100 worth of yen) at EWR for immediate arrival needs (train fare), then use ATMs in Japan for the rest.</p>
+
+      <p><strong>Duty-Free:</strong> Dufry Duty-Free in the main concourse area. Japan allows 3 bottles of alcohol duty-free. Good place to pick up a bottle of American bourbon as a gift.</p>
+
+      <p><strong>United Club at Gate C123:</strong> The largest United Club in the system (~30,000 sq ft). Full buffet, coffee bar, showers. Requires membership or day pass.</p>
+
+      <p><strong>Wi-Fi:</strong> Free throughout Terminal C.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+      Documents You Need at Each Step
+      <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="collapsible-body">
+      <ul class="info-list">
+        <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/></svg><div><strong>Value Parking:</strong> Reservation voucher (printed or on phone). They'll take your keys and park your car.</div></li>
+        <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/></svg><div><strong>Check-in Kiosk:</strong> Passport (scanned for identity + APIS verification). Printed boarding pass if you have one; if not, the kiosk will print one. Look up your confirmation in the United app &rarr; My Trips or your ANA booking email. <em>Passport in hand.</em></div></li>
+        <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><strong>TSA Security:</strong> Passport + <strong>printed boarding pass</strong> (mobile not accepted for international). TSA agent checks both. PreCheck doesn't change document requirements. <em>Passport in hand.</em></div></li>
+        <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg><div><strong>Boarding Gate:</strong> Passport + printed boarding pass. Gate agent <strong>will re-check your passport</strong> (standard for all international departures). Both documents are scanned. <em>Passport in hand.</em></div></li>
+        <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div><strong>Arrival in Japan:</strong> Passport + completed Visit Japan Web QR codes (customs &amp; immigration). No visa needed for US citizens (stays under 90 days). <em>Passport in hand.</em></div></li>
       </ul>
+      <p style="margin-top: 12px;"><strong>Summary:</strong> Keep your passport accessible at all times until you're seated on the plane. You'll show it at Value Parking (ID may be requested), check-in, security, and boarding. After boarding, you can stow it until arrival in Japan.</p>
     </div>
+  </div>
 
-    <!-- At the airport -->
-    <h3>At the Airport: Step by Step</h3>
-
-    <div class="card">
-      <h4>Step 1 &mdash; Enter Terminal C</h4>
-      <p>After curbside drop-off on the <strong>upper level (departures)</strong>, walk through the doors into the Terminal C check-in hall.</p>
-      <p>You're now on <strong>Level 2</strong> — economy check-in.</p>
+  <div class="collapsible">
+    <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+      Arrival Time Math: Why 7:30 AM at Parking?
+      <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="collapsible-body">
+      <p>Working backward from 11:30 AM departure:</p>
+      <table style="width:100%; font-size:14px; border-collapse:collapse; margin: 12px 0;">
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>11:30 AM</strong></td>
+          <td style="padding:8px 0;">Scheduled departure</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>11:20 AM</strong></td>
+          <td style="padding:8px 0;">Doors close</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>10:40 AM</strong></td>
+          <td style="padding:8px 0;">Boarding begins (~50 min before)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>9:00 AM</strong></td>
+          <td style="padding:8px 0;">At gate, settled (2.5 hours of buffer)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>8:40 AM</strong></td>
+          <td style="padding:8px 0;">Clear security + walk to C3 (20 min)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>8:20 AM</strong></td>
+          <td style="padding:8px 0;">Start PreCheck screening (~10&ndash;15 min)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>8:00 AM</strong></td>
+          <td style="padding:8px 0;">Check-in &amp; document verification (~20 min)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>~7:50 AM</strong></td>
+          <td style="padding:8px 0;">Shuttle arrives at Terminal C (~4 min ride)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding:8px 0;"><strong>~7:40 AM</strong></td>
+          <td style="padding:8px 0;">Board shuttle at Value Parking</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0; color: var(--accent); font-weight: 700;">7:30 AM</td>
+          <td style="padding:8px 0; font-weight: 600;">Arrive Value Parking &mdash; valet handoff</td>
+        </tr>
+      </table>
+      <p>This gives you <strong>4 hours</strong> between arrival at Value Parking and departure. Even with worst-case shuttle waits or security delays, you have massive buffer at every step. If everything goes smoothly, you'll have nearly 2 hours of relaxation at the gate.</p>
     </div>
+  </div>
 
-    <div class="card">
-      <h4>Step 2 &mdash; Check-In &amp; Document Verification</h4>
-      <p><span class="badge badge-green">No checked bag</span> You're traveling carry-on only, so this step is quick. No bag drop needed.</p>
-      <p><strong>If you checked in online and printed your boarding pass:</strong> Head to a <strong>self-service kiosk in Zones E&ndash;G</strong> on Level 2. Scan your passport for identity and APIS verification. The kiosk confirms your boarding pass. You're done &mdash; head straight to security.</p>
-      <p><strong>If you did NOT check in online:</strong> The kiosk handles everything &mdash; check-in, passport verification, and boarding pass printing. Scan your passport (easiest) or enter the confirmation number from your ANA booking email. Allow 15&ndash;20 minutes.</p>
-      <p><span class="badge badge-blue">Codeshare note</span> You check in at <strong>United counters/kiosks</strong>, not ANA. Your ANA confirmation (in your booking email or United app &rarr; My Trips) and ANA ticket stock work at United kiosks.</p>
+  <!-- Luggage details -->
+  <div class="collapsible">
+    <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
+      Luggage Rules: Complete Details
+      <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="collapsible-body">
+      <p><span class="badge badge-green">Carry-on only</span> No checked bag. This means no bag drop line, no waiting at baggage claim in Tokyo, and no risk of lost luggage.</p>
+      <p><strong>Carry-On:</strong></p>
+      <ul style="margin: 4px 0 12px 20px; font-size: 14px;">
+        <li><strong>1 carry-on bag:</strong> Max 22 x 14 x 9 inches (56 x 35 x 22 cm)</li>
+        <li><strong>1 personal item:</strong> Backpack, laptop bag, or small bag that fits under the seat</li>
+        <li>ANA's weight limit is 22 lbs (10 kg) total &mdash; United doesn't enforce this strictly on their aircraft, but keep it reasonable</li>
+      </ul>
+      <p><strong>Japan Prohibited Items (commonly missed):</strong></p>
+      <ul style="margin: 4px 0 12px 20px; font-size: 14px;">
+        <li><span class="badge badge-red">Banned</span> Amphetamine ADHD meds (Adderall, Dexedrine) &mdash; <strong>illegal under all circumstances, even with a US prescription</strong></li>
+        <li><span class="badge badge-red">Banned</span> Pseudoephedrine products (Sudafed, Vicks Inhalers)</li>
+        <li><span class="badge badge-red">Banned</span> All cannabis and CBD products (including CBD oil, gummies, topicals) &mdash; zero tolerance</li>
+        <li><span class="badge badge-yellow">Restricted</span> Codeine medications &mdash; requires advance import certificate</li>
+        <li><span class="badge badge-yellow">Restricted</span> Meat products in luggage (beef jerky, salami) &mdash; prohibited at customs, penalty up to $20K</li>
+        <li><span class="badge badge-yellow">Restricted</span> Fresh fruits and vegetables &mdash; prohibited</li>
+      </ul>
+      <p style="font-size: 13px; color: var(--text-muted);">If you take any prescription medication, verify it's legal in Japan <strong>before</strong> packing. The US Embassy Tokyo website has current guidance.</p>
     </div>
+  </div>
+</section>
 
-    <div class="card">
-      <h4>Step 3 &mdash; Security (TSA PreCheck)</h4>
-      <p>Head up to the <strong>Mezzanine level</strong>. Follow signs for <strong>Security / All Gates</strong>.</p>
-      <p>The main checkpoint has dedicated <strong>TSA PreCheck lanes</strong>. Monday mid-morning PreCheck wait: typically <strong>5&ndash;15 minutes</strong>.</p>
-      <p><strong>Have in hand:</strong> Passport + printed boarding pass. TSA PreCheck doesn't change what documents you need &mdash; it just speeds up the screening.</p>
-      <p><strong>PreCheck rules:</strong> Leave shoes on. Laptop stays in bag. No liquids removal. Belt stays on. Walk through the metal detector (not the body scanner). Fast and simple.</p>
-      <p><span class="badge badge-green">TSA PreCheck</span> You have PreCheck. Use the dedicated lane. It's marked clearly.</p>
-      <p style="margin-top: 8px; font-size: 13px; color: var(--text-muted);"><strong>After security:</strong> You can stow your passport for now. You won't need it again until the boarding gate. Fill your water bottle at a refill station (there's one near Gate C121).</p>
-    </div>
+<!-- ========================================
+     RETURN TRIP
+     ======================================== -->
+<section id="return">
+  <h2>Coming Home: May 11</h2>
 
-    <div class="card">
-      <h4>Step 4 &mdash; Walk to Your Gate (Concourse C3)</h4>
-      <p>After security, you're airside. All three concourses (C1, C2, C3) are connected &mdash; no additional security needed.</p>
-      <p>International wide-body flights to NRT depart from <strong>Concourse C3, gates C120&ndash;C139</strong>. This is a <strong>10&ndash;15 minute walk</strong> from the main security checkpoint. Head left/straight and follow signs for gates C120+.</p>
-      <p>You'll pass restrooms, water refill stations, and food options on the walk. There are additional restrooms near the C130s gates.</p>
-      <div class="card card-warning" style="margin-top: 12px; margin-bottom: 0;">
-        <p><strong>Gate changes are common at EWR.</strong> Before committing to a long walk, check your gate on the <strong>departure board</strong> right after security and on the <strong>United app</strong> (Flight Status section &mdash; the boarding pass view can show stale info). Check again if you stop for food. Don't camp out far from the gate area until you've confirmed the gate number.</p>
+  <div class="card card-accent">
+    <h4>Return Flight</h4>
+    <p><strong>NH 6452</strong> (United-operated) &bull; NRT &rarr; EWR &bull; Departs 5:15 PM &bull; Arrives <strong>5:00 PM</strong> same day (May 11)</p>
+    <p>12h 45m flight. You land at <strong>Terminal B</strong> (not Terminal C).</p>
+  </div>
+
+  <h3>Terminal B to Value Parking</h3>
+  <div class="card" style="padding: 8px 20px;">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Immigration &amp; Customs at Terminal B</div>
+        <div class="step-desc">After landing at ~5:00 PM, you'll go through US Customs &amp; Border Protection. Have your passport ready. Since you're carry-on only, <strong>skip baggage claim</strong> &mdash; head straight through customs. Expect 30&ndash;60 minutes total for immigration + customs on a busy evening.</div>
       </div>
     </div>
-
-    <div class="card">
-      <h4>Step 5 &mdash; At the Gate</h4>
-      <p>You should arrive at the gate area by <strong>10:15 AM</strong> &mdash; 75 minutes before departure.</p>
-      <p><strong>Boarding begins ~10:40 AM</strong> (about 50 minutes before departure for international 787 flights).</p>
-      <p><strong>At the gate, have ready:</strong> Passport + printed boarding pass. The gate agent <strong>will re-check your passport</strong> when you board &mdash; this is standard for all international departures. They scan both documents.</p>
-      <p><strong>Boarding order (United's system):</strong></p>
-      <ol style="margin: 8px 0 12px 20px; font-size: 14px;">
-        <li>Pre-boarding (disabilities, families with small children, military)</li>
-        <li>Group 1 &mdash; Business/first class, Premier Platinum/Gold, Star Alliance Gold</li>
-        <li>Group 2 &mdash; Premier Silver, Star Alliance Silver, United cardholders</li>
-        <li>Group 3 &mdash; Economy <strong>window</strong> seats</li>
-        <li>Group 4 &mdash; Economy <strong>middle</strong> seats</li>
-        <li>Group 5 &mdash; Economy <strong>aisle</strong> seats</li>
-      </ol>
-      <p>As an ANA-ticketed economy passenger, you'll be in <strong>Group 3, 4, or 5</strong> based on your seat position. <strong>Tip:</strong> A window seat puts you in Group 3 (earliest economy boarding), giving you first access to overhead bin space.</p>
-      <p><strong>Doors close at ~11:20 AM.</strong> Be at the gate before boarding starts.</p>
-    </div>
-
-    <!-- Terminal diagram -->
-    <h3>Terminal C: Interior Flow</h3>
-    <div class="diagram-container">
-      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="font-family: system-ui, sans-serif;">
-        <!-- Background -->
-        <rect width="700" height="340" fill="none"/>
-
-        <!-- Level labels -->
-        <rect x="20" y="10" width="660" height="70" rx="8" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5" opacity="0.5"/>
-        <text x="40" y="38" font-size="11" font-weight="700" fill="#0369a1" text-transform="uppercase" letter-spacing="1">MEZZANINE — SECURITY &amp; GATES</text>
-        <text x="40" y="58" font-size="12" fill="#57534e">TSA PreCheck → All Gates (C1, C2, C3)</text>
-
-        <rect x="20" y="90" width="660" height="70" rx="8" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
-        <text x="40" y="118" font-size="11" font-weight="700" fill="#57534e" letter-spacing="1">LEVEL 3 — PREMIER CHECK-IN</text>
-        <text x="40" y="138" font-size="12" fill="#a8a29e">Zones B &amp; D • Bag Drop Shortcut (west end)</text>
-
-        <rect x="20" y="170" width="660" height="70" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
-        <text x="40" y="198" font-size="11" font-weight="700" fill="#15803d" letter-spacing="1">LEVEL 2 — ECONOMY CHECK-IN (YOU)</text>
-        <text x="40" y="218" font-size="12" fill="#57534e">Zones E–G • Self-service kiosks • Bag drop counters</text>
-
-        <rect x="20" y="250" width="660" height="70" rx="8" fill="#f5f5f4" stroke="#a8a29e" stroke-width="1"/>
-        <text x="40" y="278" font-size="11" font-weight="700" fill="#57534e" letter-spacing="1">LEVEL 1 — ARRIVALS / BAGGAGE CLAIM</text>
-        <text x="40" y="298" font-size="12" fill="#a8a29e">Lower level • Not needed for departure</text>
-
-        <!-- Arrow: curbside to Level 2 -->
-        <line x1="530" y1="205" x2="530" y2="75" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrowBlue)"/>
-        <text x="545" y="155" font-size="11" font-weight="600" fill="#0369a1">Your path ↑</text>
-
-        <!-- Concourse boxes -->
-        <rect x="450" y="18" width="65" height="50" rx="6" fill="#0369a1" opacity="0.15" stroke="#0369a1" stroke-width="1"/>
-        <text x="483" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C1</text>
-        <text x="483" y="52" font-size="9" fill="#57534e" text-anchor="middle">C70–C99</text>
-
-        <rect x="525" y="18" width="65" height="50" rx="6" fill="#0369a1" opacity="0.15" stroke="#0369a1" stroke-width="1"/>
-        <text x="558" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C2</text>
-        <text x="558" y="52" font-size="9" fill="#57534e" text-anchor="middle">C101–115</text>
-
-        <rect x="600" y="18" width="70" height="50" rx="6" fill="#0369a1" opacity="0.3" stroke="#0369a1" stroke-width="2"/>
-        <text x="635" y="38" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">C3 ★</text>
-        <text x="635" y="52" font-size="9" fill="#0369a1" text-anchor="middle">C120–139</text>
-
-        <!-- Arrow def -->
-        <defs>
-          <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#0369a1"/></marker>
-        </defs>
-      </svg>
-      <div class="diagram-label">Terminal C cross-section — your path from curbside to gate</div>
-    </div>
-
-    <!-- What's near your gate -->
-    <div class="collapsible">
-      <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-        Near Your Gate: Food, Charging &amp; More
-        <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="collapsible-body">
-        <p><strong>Water:</strong> You can't bring water through security. Refill stations are near <strong>Gate C121</strong>, <strong>Gate C132</strong>, and <strong>Gate C138</strong>. Bring an empty bottle and fill up post-security.</p>
-
-        <p><strong>Food &mdash; should you eat?</strong> You'll arrive at the gate around 10:15 AM with boarding at ~10:40 AM. That's <strong>~25 minutes</strong> &mdash; enough for grab-and-go, not a sit-down meal. The 787 will serve full meals on the 14-hour flight, but a light snack before boarding is smart.</p>
-        <p><strong>Quick options near C120&ndash;C139:</strong></p>
-        <ul style="margin: 8px 0 12px 20px; font-size: 14px;">
-          <li><strong>Caps Beer Garden</strong> (near C120) &mdash; bar food, sushi rolls, sandwiches. Quick if you order at the bar.</li>
-          <li><strong>Pat LaFrieda Burger</strong> (near C120) &mdash; excellent burgers, counter service. Relatively quick.</li>
-          <li><strong>Nathan's Famous</strong> &mdash; hot dogs, fastest option in C3.</li>
-          <li><strong>Dunkin'</strong> (C101&ndash;C115 area) &mdash; coffee, short walk back toward C2.</li>
-        </ul>
-        <p>You can also buy food to bring on the plane as a backup snack.</p>
-
-        <p><strong>Restrooms:</strong> Located throughout C3 &mdash; near the concourse entrance, mid-concourse, and near the C130s gates. You'll pass them on your walk from security.</p>
-
-        <p><strong>Charging:</strong> USB and AC power outlets at most gate seating areas in C3. The 787 also has outlets at every seat.</p>
-
-        <p><strong>Currency exchange:</strong> CXI (Currency Exchange International) has a location near the <strong>Gate C120 area</strong> post-security. However, <strong>you'll get a much better rate in Japan</strong>. Narita Airport has competitive exchange counters, and 7-Eleven ATMs throughout Japan give excellent rates with a Visa/Mastercard debit card. Recommendation: exchange a small amount ($50&ndash;100 worth of yen) at EWR for immediate arrival needs (train fare), then use ATMs in Japan for the rest.</p>
-
-        <p><strong>Duty-Free:</strong> Dufry Duty-Free in the main concourse area. Japan allows 3 bottles of alcohol duty-free. Good place to pick up a bottle of American bourbon as a gift.</p>
-
-        <p><strong>United Club at Gate C123:</strong> The largest United Club in the system (~30,000 sq ft). Full buffet, coffee bar, showers. Requires membership or day pass.</p>
-
-        <p><strong>Wi-Fi:</strong> Free throughout Terminal C.</p>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Call Value Parking for Shuttle Pickup</div>
+        <div class="step-desc">Once you're through customs and outside Terminal B, call <strong><a href="tel:+19736396711" style="color: var(--accent);">973-639-6711</a></strong> and tell them you need a pickup at <strong>Terminal B</strong>. The shuttle runs to all terminals. Wait at the designated shuttle/courtesy vehicle pickup area.</div>
       </div>
     </div>
-
-    <div class="collapsible">
-      <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-        Documents You Need at Each Step
-        <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="collapsible-body">
-        <ul class="info-list">
-          <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/></svg><div><strong>Check-in Kiosk:</strong> Passport (scanned for identity + APIS verification). Printed boarding pass if you have one; if not, the kiosk will print one. Look up your confirmation in the United app &rarr; My Trips or your ANA booking email. <em>Passport in hand.</em></div></li>
-          <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><strong>TSA Security:</strong> Passport + <strong>printed boarding pass</strong> (mobile not accepted for international). TSA agent checks both. PreCheck doesn't change document requirements. <em>Passport in hand.</em></div></li>
-          <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg><div><strong>Boarding Gate:</strong> Passport + printed boarding pass. Gate agent <strong>will re-check your passport</strong> (standard for all international departures). Both documents are scanned. <em>Passport in hand.</em></div></li>
-          <li><svg class="il-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div><strong>Arrival in Japan:</strong> Passport + completed Visit Japan Web QR codes (customs &amp; immigration). No visa needed for US citizens (stays under 90 days). No COVID requirements as of 2025. <em>Passport in hand.</em></div></li>
-        </ul>
-        <p style="margin-top: 12px;"><strong>Summary:</strong> Keep your passport accessible at all times until you're seated on the plane. You'll show it at check-in, security, and boarding. After boarding, you can stow it until arrival in Japan.</p>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Shuttle to Value Parking (~4 min)</div>
+        <div class="step-desc">The shuttle brings you back to Value Parking at 139 McClellan St. The valet will retrieve your Honda Pilot. Show your claim ticket or reservation confirmation.</div>
       </div>
     </div>
-
-    <div class="collapsible">
-      <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-        Arrival Time Math: Why 9:00 AM?
-        <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="collapsible-body">
-        <p>Working backward from 11:30 AM departure:</p>
-        <table style="width:100%; font-size:14px; border-collapse:collapse; margin: 12px 0;">
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>11:30 AM</strong></td>
-            <td style="padding:8px 0;">Scheduled departure</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>11:20 AM</strong></td>
-            <td style="padding:8px 0;">Doors close</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>10:40 AM</strong></td>
-            <td style="padding:8px 0;">Boarding begins (~50 min before)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>10:15 AM</strong></td>
-            <td style="padding:8px 0;">At gate, settled</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>9:50 AM</strong></td>
-            <td style="padding:8px 0;">Clear security + walk to C3 (25 min)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>9:30 AM</strong></td>
-            <td style="padding:8px 0;">Start PreCheck screening (~10&ndash;15 min)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding:8px 0;"><strong>9:00 AM</strong></td>
-            <td style="padding:8px 0;">Check-in &amp; document verification (~15 min)</td>
-          </tr>
-          <tr>
-            <td style="padding:8px 0; color: var(--accent); font-weight: 700;">9:00 AM</td>
-            <td style="padding:8px 0; font-weight: 600;">Arrive at curbside</td>
-          </tr>
-        </table>
-        <p>This gives you <strong>2.5 hours</strong> before departure — standard for international with PreCheck. United recommends 3 hours; PreCheck saves ~30 minutes. You have comfortable buffer at every step.</p>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Drive Home &mdash; Blackwood</div>
+        <div class="step-desc">Reverse your morning route: head south via <strong>NJ Turnpike South</strong> &rarr; <strong>I-295 South</strong> &rarr; <strong>Route 42 South</strong> &rarr; Blackwood. Sunday evening traffic should be lighter. Expect ~1.5 hours. Your E-ZPass handles tolls automatically. <strong>Estimated arrival home: ~8:30&ndash;9:00 PM.</strong></div>
       </div>
     </div>
+  </div>
 
-    <!-- Communication Plan -->
-    <h3>Text Checkpoints for Colleen</h3>
-    <div class="card card-accent">
-      <p style="margin-bottom: 12px;">Send a quick text at each milestone so Colleen knows you're on track. Tap to pre-fill:</p>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <a href="sms:?body=Dropped%20off%2C%20heading%20inside.%20All%20good." style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-alt); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 14px; border: 1px solid var(--border);">
-          <span style="font-size: 18px; flex-shrink: 0;">1.</span>
-          <span>"Dropped off, heading inside. All good."</span>
-        </a>
-        <a href="sms:?body=Through%20security%2C%20heading%20to%20gate.%20Everything%27s%20smooth." style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-alt); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 14px; border: 1px solid var(--border);">
-          <span style="font-size: 18px; flex-shrink: 0;">2.</span>
-          <span>"Through security, heading to gate. Everything's smooth."</span>
-        </a>
-        <a href="sms:?body=At%20the%20gate%2C%20boarding%20soon.%20Love%20you." style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-alt); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 14px; border: 1px solid var(--border);">
-          <span style="font-size: 18px; flex-shrink: 0;">3.</span>
-          <span>"At the gate, boarding soon. Love you."</span>
-        </a>
-        <a href="sms:?body=Boarded%20and%20seated.%20See%20you%20in%20two%20weeks!%20%E2%9C%88%EF%B8%8F" style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--bg-alt); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 14px; border: 1px solid var(--border);">
-          <span style="font-size: 18px; flex-shrink: 0;">4.</span>
-          <span>"Boarded and seated. See you in two weeks!"</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Luggage details -->
-    <div class="collapsible">
-      <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-        Luggage Rules: Complete Details
-        <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="collapsible-body">
-        <p><span class="badge badge-green">Carry-on only</span> No checked bag. This means no bag drop line, no waiting at baggage claim in Tokyo, and no risk of lost luggage.</p>
-        <p><strong>Carry-On:</strong></p>
-        <ul style="margin: 4px 0 12px 20px; font-size: 14px;">
-          <li><strong>1 carry-on bag:</strong> Max 22 x 14 x 9 inches (56 x 35 x 22 cm)</li>
-          <li><strong>1 personal item:</strong> Backpack, laptop bag, or small bag that fits under the seat</li>
-          <li>ANA's weight limit is 22 lbs (10 kg) total &mdash; United doesn't enforce this strictly on their aircraft, but keep it reasonable</li>
-        </ul>
-        <p><strong>Japan Prohibited Items (commonly missed):</strong></p>
-        <ul style="margin: 4px 0 12px 20px; font-size: 14px;">
-          <li><span class="badge badge-red">Banned</span> Amphetamine ADHD meds (Adderall, Dexedrine) &mdash; <strong>illegal under all circumstances, even with a US prescription</strong></li>
-          <li><span class="badge badge-red">Banned</span> Pseudoephedrine products (Sudafed, Vicks Inhalers)</li>
-          <li><span class="badge badge-red">Banned</span> All cannabis and CBD products (including CBD oil, gummies, topicals) &mdash; zero tolerance</li>
-          <li><span class="badge badge-yellow">Restricted</span> Codeine medications &mdash; requires advance import certificate</li>
-          <li><span class="badge badge-yellow">Restricted</span> Meat products in luggage (beef jerky, salami) &mdash; prohibited at customs, penalty up to $20K</li>
-          <li><span class="badge badge-yellow">Restricted</span> Fresh fruits and vegetables &mdash; prohibited</li>
-        </ul>
-        <p style="font-size: 13px; color: var(--text-muted);">If you take any prescription medication, verify it's legal in Japan <strong>before</strong> packing. The US Embassy Tokyo website has current guidance.</p>
-      </div>
-    </div>
-
-  </div><!-- /traveler-content -->
-
-  <!-- ============ DRIVER SECTION ============ -->
-  <div class="section-content" id="driver-content">
-
-    <div class="reassurance">
-      <p>Hey Colleen. This section is just for you. Everything here is written in the order you'll need it, so you can follow along in real time. The airport road system looks complicated on a map, but in person it's just <strong>one road with clear signs</strong>. You've got this.</p>
-    </div>
-
-    <!-- Route Overview -->
-    <h3>The Route: Big Picture</h3>
-    <div class="card card-driver">
-      <p style="font-size: 15px; margin-bottom: 12px;">The whole drive is four roads in a straight line north. No complicated turns, no confusing interchanges. Here's the shape of it:</p>
-      <p><span class="badge badge-purple">90 miles</span> <span class="badge badge-purple">~2 hours with traffic</span></p>
-    </div>
-
-    <!-- SVG Route Diagram -->
-    <div class="diagram-container">
-      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="font-family: system-ui, sans-serif;">
-        <!-- Road line -->
-        <line x1="40" y1="100" x2="660" y2="100" stroke="#ddd6fe" stroke-width="8" stroke-linecap="round"/>
-        <line x1="40" y1="100" x2="660" y2="100" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-dasharray="12 6"/>
-
-        <!-- Stops -->
-        <circle cx="60" cy="100" r="16" fill="#7c3aed"/>
-        <text x="60" y="105" font-size="10" fill="white" text-anchor="middle" font-weight="700">H</text>
-        <text x="60" y="75" font-size="11" font-weight="600" fill="#1c1917" text-anchor="middle">Blackwood</text>
-        <text x="60" y="135" font-size="10" fill="#78716c" text-anchor="middle">6:30 AM</text>
-
-        <circle cx="190" cy="100" r="12" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
-        <text x="190" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">Rt 42 N</text>
-        <text x="190" y="135" font-size="9" fill="#78716c" text-anchor="middle">~5 min</text>
-
-        <circle cx="310" cy="100" r="12" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
-        <text x="310" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">I-295 N</text>
-        <text x="310" y="135" font-size="9" fill="#78716c" text-anchor="middle">~35 min</text>
-
-        <circle cx="450" cy="100" r="12" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
-        <text x="450" y="70" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">NJ Turnpike N</text>
-        <text x="450" y="83" font-size="9" fill="#b91c1c" text-anchor="middle">(LOCAL lanes!)</text>
-        <text x="450" y="135" font-size="9" fill="#78716c" text-anchor="middle">~60–80 min</text>
-
-        <circle cx="570" cy="100" r="12" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
-        <text x="570" y="75" font-size="10" font-weight="600" fill="#57534e" text-anchor="middle">Exit 13A</text>
-        <text x="570" y="135" font-size="9" fill="#78716c" text-anchor="middle">~5 min</text>
-
-        <circle cx="650" cy="100" r="16" fill="#7c3aed"/>
-        <text x="650" y="104" font-size="8" fill="white" text-anchor="middle" font-weight="700">EWR</text>
-        <text x="650" y="75" font-size="11" font-weight="600" fill="#1c1917" text-anchor="middle">Terminal C</text>
-        <text x="650" y="135" font-size="10" fill="#78716c" text-anchor="middle">~9:00 AM</text>
-      </svg>
-      <div class="diagram-label">Your route: four roads, straight north, one exit</div>
-    </div>
-
-    <!-- Step-by-step driving -->
-    <h3>Driving Directions: Step by Step</h3>
-    <div class="card" style="padding: 8px 20px;">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <div class="step-title">Leave Blackwood → Route 42 North</div>
-          <div class="step-desc">Head to <strong>Route 42 North</strong> via the Black Horse Pike or Route 168. Route 42 is a freeway here — no traffic lights. You'll be on it for about 5 minutes.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <div class="step-title">Route 42 ends → Merge onto I-295 North</div>
-          <div class="step-desc">Route 42 feeds directly into <strong>I-295 North</strong> near Bellmawr. Just follow the signs for <strong>I-295 North</strong>. Do <em>not</em> follow signs for I-76 West (Philadelphia) — that goes left. You go straight/right.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <div class="step-title">I-295 North → NJ Turnpike North</div>
-          <div class="step-desc">Stay on I-295 North for about 40 miles through Burlington County. Near Bordentown, follow signs for <strong>NJ Turnpike North / New York / Newark</strong>. You'll go through a toll plaza &mdash; your E-ZPass handles it automatically.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <div class="step-title" style="color: var(--danger);">⚠ CRITICAL: Take the LOCAL Lanes</div>
-          <div class="step-desc">The Turnpike splits into two sets of lanes around Exit 6. You need the <strong>LOCAL / Eastern lanes (exits 8&ndash;14)</strong>, not the Express/Western lanes. Look for signs that say <strong>"Local Lanes / Exits 8–14"</strong> and stay in those. Exit 13A is <em>only</em> accessible from the local lanes.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <div class="step-title">Exit 13A — Newark Airport</div>
-          <div class="step-desc">Take <strong>Exit 13A — Newark Airport / Elizabeth Seaport</strong>. After the exit, follow signs for <strong>Newark Liberty International Airport</strong> (not Elizabeth). You're now on the airport access road.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-content">
-          <div class="step-title">Follow signs for Terminal C / United Airlines</div>
-          <div class="step-desc">The terminals appear in order: A, B, then C. Terminal C is the last one. Follow signs for <strong>Terminal C</strong> or <strong>United Airlines</strong>. You can't miss it — the signs are frequent and clear.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">7</div>
-        <div class="step-content">
-          <div class="step-title">Departures — Upper Level</div>
-          <div class="step-desc">As you approach Terminal C, follow signs for <strong>Departures (Upper Level)</strong>. You'll go up a ramp. The curbside is a covered roadway with the terminal entrance doors on your right. <strong>Pull over to the curb, put on hazards, and say goodbye.</strong> Stephen has just a carry-on, so he'll hop right out. You don't need to rush — you have a couple of minutes. An officer may motion you along if you linger too long, but a quick stop is fine.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Drop-off zone diagram -->
-    <h3>The Drop-Off: What You'll See</h3>
-    <div class="diagram-container">
-      <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" style="font-family: system-ui, sans-serif;">
-        <!-- Terminal building -->
-        <rect x="50" y="20" width="600" height="80" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-        <text x="350" y="50" font-size="14" font-weight="700" fill="#7c3aed" text-anchor="middle">TERMINAL C — DEPARTURES ENTRANCE</text>
-        <text x="350" y="70" font-size="11" fill="#57534e" text-anchor="middle">Doors → Check-in Hall (Level 2)</text>
-        <!-- Entrance markers -->
-        <rect x="140" y="90" width="30" height="10" rx="2" fill="#7c3aed" opacity="0.5"/>
-        <rect x="270" y="90" width="30" height="10" rx="2" fill="#7c3aed" opacity="0.5"/>
-        <rect x="400" y="90" width="30" height="10" rx="2" fill="#7c3aed" opacity="0.5"/>
-        <rect x="530" y="90" width="30" height="10" rx="2" fill="#7c3aed" opacity="0.5"/>
-        <text x="350" y="112" font-size="9" fill="#78716c" text-anchor="middle">← Entrance Doors →</text>
-
-        <!-- Curbside -->
-        <rect x="50" y="120" width="600" height="30" rx="4" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1"/>
-        <text x="350" y="140" font-size="10" font-weight="600" fill="#7c3aed" text-anchor="middle">CURBSIDE — Pull over here, hazards on</text>
-
-        <!-- Road -->
-        <rect x="30" y="160" width="640" height="50" rx="6" fill="#e7e5e4" stroke="#a8a29e" stroke-width="1"/>
-        <!-- Direction arrow -->
-        <text x="350" y="190" font-size="11" font-weight="600" fill="#57534e" text-anchor="middle">→ → → TRAFFIC FLOW → → → (one way)</text>
-
-        <!-- Your car -->
-        <rect x="230" y="167" width="60" height="36" rx="8" fill="#7c3aed"/>
-        <text x="260" y="189" font-size="9" fill="white" text-anchor="middle" font-weight="700">YOU</text>
-
-        <!-- Labels -->
-        <text x="50" y="235" font-size="11" fill="#57534e">← From airport road</text>
-        <text x="540" y="235" font-size="11" fill="#57534e">Continue to exit →</text>
-
-        <!-- Reassurance text -->
-        <text x="350" y="268" font-size="12" font-weight="600" fill="#7c3aed" text-anchor="middle">Pull up → Stop → Say goodbye → Drive forward when ready</text>
-      </svg>
-      <div class="diagram-label">Terminal C upper level curbside — just pull over and stop</div>
-    </div>
-
-    <div class="reassurance">
-      <p>The curbside zone is simple. It's one straight road along the front of the building. Pull to the right curb, turn on your hazards, and Stephen hops out with his carry-on. <strong>You don't need to park. You don't need to get out.</strong> When you're ready, just start driving forward. The road takes you to the exit automatically. No turns, no decisions.</p>
-    </div>
-
-    <!-- Getting home -->
-    <h3>Getting Home: After Drop-Off</h3>
-    <div class="card" style="padding: 8px 20px;">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <div class="step-title">Drive forward from the curbside</div>
-          <div class="step-desc">After the drop-off, just keep driving forward. The road is one-way. You can't go the wrong direction. It feeds you out of the terminal area automatically.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <div class="step-title">Follow signs for NJ Turnpike South</div>
-          <div class="step-desc">As you leave the terminal loop, follow signs for <strong>NJ Turnpike South / I-95 South</strong>. This puts you back on the highway heading home. Your E-ZPass handles the tolls automatically.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <div class="step-title">Turnpike South → I-295 South</div>
-          <div class="step-desc">Drive south on the Turnpike. Near Bordentown, follow signs for <strong>I-295 South / Camden</strong>. This is the same road you came up on, just in reverse.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <div class="step-title">I-295 South → Route 42 South → Blackwood</div>
-          <div class="step-desc">I-295 South connects to <strong>Route 42 South</strong> near Bellmawr. Take Route 42 South to your usual Blackwood exit. <strong>You're home.</strong></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card card-success" style="margin-top: 16px;">
-      <p style="font-size: 15px;"><strong>Return trip time:</strong> About 1.5 hours. You'll be heading south (against the Monday morning commuter flow), so traffic will be lighter on the way back. You should be home by approximately <strong>10:30&ndash;11:00 AM</strong>.</p>
-    </div>
-
-    <!-- Communication Plan -->
-    <h3>Texts from Stephen</h3>
-    <div class="reassurance">
-      <p>Stephen will text you at four checkpoints after you drop him off. This way you know he's on track without having to wonder. Here's what to expect and roughly when:</p>
-    </div>
-    <div class="card card-driver" style="padding: 16px 20px;">
-      <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <span class="badge badge-purple" style="flex-shrink: 0;">~9:05 AM</span>
-          <span>"Dropped off, heading inside. All good."</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <span class="badge badge-purple" style="flex-shrink: 0;">~9:50 AM</span>
-          <span>"Through security, heading to gate. Everything's smooth."</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <span class="badge badge-purple" style="flex-shrink: 0;">~10:15 AM</span>
-          <span>"At the gate, boarding soon. Love you."</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <span class="badge badge-purple" style="flex-shrink: 0;">~10:50 AM</span>
-          <span>"Boarded and seated. See you in two weeks!"</span>
-        </div>
-      </div>
-    </div>
-    <p style="font-size: 14px; color: var(--text-muted); margin: 12px 0 24px;">If you haven't heard from him by an expected time, <strong>don't worry</strong>. The airport has spotty cell coverage in some areas, and check-in lines can vary. He'll text when he can. You'll likely be well on your way home by the time you get the last message.</p>
-
-    <!-- What-ifs -->
-    <h3>What If...?</h3>
-    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Every question you might have, answered in advance.</p>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if I miss the Terminal C exit on the airport road?"</div>
-      <div class="whatif-a">You cannot get lost. The airport road is a loop. If you pass Terminal C, just keep driving — the road will loop you back around to the terminals again. It adds about 5&ndash;10 minutes. No U-turns needed, no backing up. Just keep going forward.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if I accidentally go to the wrong level (Arrivals instead of Departures)?"</div>
-      <div class="whatif-a">Not a problem. Stephen can still get out and walk into the building — there are elevators and escalators inside that go between levels. It's not ideal, but it works. Just pull over wherever it's safe and let him out.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if a traffic officer tells me to move?"</div>
-      <div class="whatif-a">This is normal. They're managing the flow of cars at the curb. It doesn't mean you're in trouble. Just give a wave, finish up quickly, and pull away when you're ready. Stephen only has a carry-on, so the stop is quick.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if I take the wrong lanes on the Turnpike (Express instead of Local)?"</div>
-      <div class="whatif-a">If you accidentally take the Express/Western lanes, you won't be able to exit at 13A. Don't panic. Take <strong>Exit 14</strong> (which is available from both spurs) and follow signs for Newark Airport from there. You can also get off at an earlier Express exit and navigate via local roads. The important thing: don't try to cross between the lane sections — just take the next available exit.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if I end up on the Turnpike by accident after the drop-off?"</div>
-      <div class="whatif-a">That's actually exactly where you want to be! You need the Turnpike South to get home. Just make sure you're heading <strong>South</strong> (toward Camden / Philadelphia), not North (toward New York). The signs will be clear.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if traffic is really bad and we're running late?"</div>
-      <div class="whatif-a">The timeline has buffer built in. Even if you arrive at 9:30 AM instead of 9:00 AM, Stephen still has 2 hours before the flight. Don't speed or stress — safety is more important than minutes. If things are truly dire, Stephen can call United at <strong>1-800-864-8331</strong> from the car.</div>
-    </div>
-
-    <div class="whatif">
-      <div class="whatif-q">"What if I need to stop or pull over after the drop-off?"</div>
-      <div class="whatif-a">Once you're past the terminal, there are safe places to pull over on the airport access roads. The <strong>Cell Phone Waiting Lot</strong> is free and accessible from the airport road — follow signs. It's a calm, quiet parking area. You can stop there, collect yourself, set up your GPS for home, and leave when you're ready.</div>
-    </div>
-
-    <div class="reassurance" style="margin-top: 24px;">
-      <p>Here's the honest truth: the drive to Newark is boring highway for 90% of it. The airport approach has big, clear signs everywhere. The drop-off curb is just "pull over and stop." And the drive home is the same boring highway in reverse. <strong>You will be fine.</strong> Thousands of people do this exact drive every single day. You've driven harder routes to the shore.</p>
-    </div>
-
-  </div><!-- /driver-content -->
+  <div class="card card-warning">
+    <p style="font-size: 14px;"><strong>Your reservation return time is 7:00 PM.</strong> With a 5:00 PM landing, 30&ndash;60 min for customs, and shuttle time, you should reach Value Parking around 6:15&ndash;7:00 PM &mdash; right on schedule. If your flight is delayed, call Value Parking to let them know.</p>
+  </div>
 </section>
 
 <!-- ========================================
@@ -1468,6 +1216,10 @@ p:last-child { margin-bottom: 0; }
 
   <h3>Important Numbers</h3>
   <div class="contact-grid">
+    <a href="tel:+19736396711" class="contact-item" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.74a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.9z"/></svg>
+      <div><div class="contact-name">Value Parking</div><div class="contact-number">973-639-6711</div></div>
+    </a>
     <a href="tel:+18008648331" class="contact-item" style="text-decoration:none;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.74a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.9z"/></svg>
       <div><div class="contact-name">United Airlines</div><div class="contact-number">1-800-864-8331</div></div>
@@ -1493,40 +1245,42 @@ p:last-child { margin-bottom: 0; }
       <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="collapsible-body">
-      <p><strong>Contact United first</strong> — they operate the aircraft. Call <strong>1-800-864-8331</strong> or use the United app.</p>
+      <p><strong>Contact United first</strong> &mdash; they operate the aircraft. Call <strong>1-800-864-8331</strong> or use the United app.</p>
       <p>This is an ANA codeshare (NH 6453) operated by United. United controls rebooking. If United can't help, contact ANA at 1-800-235-9262.</p>
       <p>If the ticket needs to be <strong>reissued</strong> (major routing change), Crystal Travel (the agency that issued the ticket) may need to be involved.</p>
       <p><strong>Your rights:</strong> For cancellations, you're entitled to rebooking on the next available flight or a full refund under DOT rules. For delays over 3 hours, ask about meal vouchers or hotel if overnight.</p>
       <p><strong>Star Alliance partners:</strong> Both United and ANA are Star Alliance members. If no United flights are available to Tokyo, request rebooking on a partner airline.</p>
+      <p><strong>Parking impact:</strong> If your flight is significantly delayed or cancelled overnight, your car is safe at Value Parking. Call them at 973-639-6711 if your travel dates change &mdash; additional days may be charged at the daily rate.</p>
     </div>
   </div>
 
   <div class="collapsible">
     <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-      If You're Running Late to the Airport
+      If You're Running Late
       <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="collapsible-body">
       <div class="card card-danger" style="margin-bottom: 12px;">
         <p><strong>Hard cutoff for international United flights:</strong></p>
         <ul style="margin: 8px 0 0 20px;">
-          <li><strong>30 minutes before departure</strong> — Gate closes. After <strong>11:00 AM</strong>, you cannot board. Period.</li>
+          <li><strong>30 minutes before departure</strong> &mdash; Gate closes. After <strong>11:00 AM</strong>, you cannot board. Period.</li>
         </ul>
       </div>
       <p>Since you're carry-on only, you don't have a bag drop cutoff to worry about. You just need to clear security and reach the gate before 11:00 AM.</p>
-      <p><strong>If it's close:</strong> Call United (1-800-864-8331) from the car and tell them you're en route. They can sometimes note your reservation and hold your check-in open a few extra minutes.</p>
+      <p><strong>If traffic is bad on the Turnpike:</strong> You have a huge buffer. Even arriving at Value Parking at 9:00 AM (1.5 hours late) still gives you 2.5 hours. Don't speed or stress &mdash; the timeline is built with margin.</p>
+      <p><strong>If it's truly close:</strong> Call United (1-800-864-8331) from the car and tell them you're en route. They can sometimes note your reservation.</p>
     </div>
   </div>
 
   <div class="collapsible">
     <button class="collapsible-trigger" onclick="toggleCollapsible(this)">
-      Parking Alternative (Instead of Curbside)
+      If You Take the Wrong Turnpike Lanes
       <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="collapsible-body">
-      <p>If curbside drop-off feels too rushed, you can <strong>park in the Terminal C short-term garage (P4)</strong> instead.</p>
-      <p>It's directly next to Terminal C. Pull in, park, walk into the terminal together, and help with check-in. Cost is about <strong>$4&ndash;6 for the first half hour</strong>. You'd be out in under 20 minutes.</p>
-      <p>Follow signs for <strong>"Terminal C Parking"</strong> instead of "Departures" when you approach the terminal.</p>
+      <p>If you accidentally take the <strong>Express/Western lanes</strong> instead of Local, you won't be able to exit at 13A. Don't panic.</p>
+      <p>Take <strong>Exit 14</strong> (which is available from both spurs) and follow signs for Newark Airport from there. You can also get off at an earlier Express exit and navigate via local roads using your GPS.</p>
+      <p>The important thing: <strong>don't try to cross between the lane sections</strong> &mdash; just take the next available exit and let GPS reroute you.</p>
     </div>
   </div>
 
@@ -1536,8 +1290,8 @@ p:last-child { margin-bottom: 0; }
       <svg class="collapsible-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
     <div class="collapsible-body">
-      <p>EWR's AirTrain (the shuttle between terminals and the train station) is undergoing a major replacement project. <strong>This does not affect you</strong> — you're driving directly to Terminal C.</p>
-      <p>However, there may be some construction signage or altered road patterns around the airport. Follow the overhead signs and you'll be fine.</p>
+      <p>EWR's AirTrain (the shuttle between terminals and the train station) is undergoing a major replacement project. <strong>This does not affect you</strong> &mdash; Value Parking's shuttle goes directly to the terminal.</p>
+      <p>However, there may be some construction signage or altered road patterns around the airport. Follow the overhead signs or your GPS and you'll be fine.</p>
     </div>
   </div>
 
@@ -1550,8 +1304,12 @@ p:last-child { margin-bottom: 0; }
         <div style="font-weight: 600;">Stephen Andrew Rutledge</div>
       </div>
       <div>
-        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Flight</div>
+        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Outbound Flight</div>
         <div style="font-weight: 600;">NH 6453 (United-operated)</div>
+      </div>
+      <div>
+        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Return Flight</div>
+        <div style="font-weight: 600;">NH 6452 (United-operated)</div>
       </div>
       <div>
         <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Aircraft</div>
@@ -1562,20 +1320,16 @@ p:last-child { margin-bottom: 0; }
         <div style="font-weight: 600;">Economy / Carry-on only</div>
       </div>
       <div>
-        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">PNR (Airline Ref)</div>
+        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Confirmation</div>
         <div style="font-weight: 600; font-size: 13px;">United app &rarr; My Trips</div>
       </div>
       <div>
-        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Ticket Number</div>
-        <div style="font-weight: 600; font-size: 13px;">ANA booking confirmation email</div>
-      </div>
-      <div>
-        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Crystal Travel Ref</div>
-        <div style="font-weight: 600; font-size: 13px;">Crystal Travel confirmation email</div>
+        <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Parking</div>
+        <div style="font-weight: 600; font-size: 13px;">Value Parking #00113999</div>
       </div>
       <div>
         <div style="color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Route</div>
-        <div style="font-weight: 600;">EWR → NRT (14h flight)</div>
+        <div style="font-weight: 600;">EWR &harr; NRT</div>
       </div>
     </div>
   </div>
@@ -1591,21 +1345,13 @@ p:last-child { margin-bottom: 0; }
      FOOTER
      ======================================== -->
 <footer class="footer container">
-  <p>Built for April 27, 2026. Safe travels, Stephen. Drive safe, Colleen.</p>
+  <p>Built for April 27, 2026. Safe travels, Stephen.</p>
 </footer>
 
 <!-- ========================================
      JAVASCRIPT
      ======================================== -->
 <script>
-// Section switcher
-function switchSection(target) {
-  document.querySelectorAll('.switcher-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
-  document.querySelector(`[data-target="${target}"]`).classList.add('active');
-  document.getElementById(`${target}-content`).classList.add('active');
-}
-
 // Collapsible sections
 function toggleCollapsible(trigger) {
   trigger.closest('.collapsible').classList.toggle('open');
@@ -1661,11 +1407,6 @@ function updateActiveNav() {
 }
 
 window.addEventListener('scroll', updateActiveNav, { passive: true });
-
-// Deep link support for driver/traveler
-if (window.location.hash === '#driver') {
-  switchSection('driver');
-}
 </script>
 
 </body>
